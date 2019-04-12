@@ -65,6 +65,9 @@ static bool etm4_arch_supported(u8 arch)
 {
 	switch (arch) {
 	case ETM_ARCH_MAJOR_V4:
+	/* Mask out the minor version number */
+	switch (arch & 0xf0) {
+	case ETM_ARCH_V4:
 		break;
 	default:
 		return false;
